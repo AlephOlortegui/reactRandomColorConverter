@@ -1,6 +1,10 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { BgContext } from '../context/BgProvider';
 
 const useSwitch = () => {
+  const {colorsFormat, dispatch} = useContext(BgContext)
+  // console.log(colorsFormat)
+
   const [isSwitch, setIsSwitch] = useState(false)
   const [data, setData] = useState({
     rValue: "",
@@ -12,12 +16,12 @@ const useSwitch = () => {
     isWarning: false,
     warningText: ''
   })
-  const [colorsFormat, setColorsFormat] = useState({
+  /* const [colorsFormat, setColorsFormat] = useState({
     hex: '#222',
     R:"34",
     G:"34",
     B:"34"
-  })
+  }) */
 
   const handleSwitch = () => { 
     setIsSwitch(prevState => !prevState)
@@ -89,11 +93,16 @@ const useSwitch = () => {
     }
     console.log(result)
     const {R,G,B} = result;
-    setColorsFormat({
+    //dispatch
+    dispatch({type: "UPDATE_BG", payload:{
+      hex: `#${y}`,
+      R,G,B
+    }})
+    /* setColorsFormat({
       ...colorsFormat,
       hex: `#${y}`,
       R,G,B
-    })
+    }) */
     //Clean input
     setData({
       ...data,
@@ -106,7 +115,7 @@ const useSwitch = () => {
   const handleToRGB = () => { 
     const {hexVal} = data
     let y = checkHash(hexVal.toLowerCase().trim())
-    console.log(y)
+    //console.log(y)
     let len = y.length;
     let rgx6 = /[a-f\d]{6}/ig; // Check correct y value, let y = /[a-f0-9]{6}/ig;
     let rgx3 = /[a-f\d]{3}/ig;
@@ -154,11 +163,16 @@ const useSwitch = () => {
           default: break;
       }
     });
-    setColorsFormat({
+    /* setColorsFormat({
       ...colorsFormat,
       hex: `#${myArr.join("")}`,
       R,G,B
-    })
+    }) */
+    //dispatch
+    dispatch({type: "UPDATE_BG", payload:{
+      hex: `#${myArr.join("")}`,
+      R,G,B
+    }})
   }
 
   const handleToHex = () => { 

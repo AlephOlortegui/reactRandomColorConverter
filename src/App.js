@@ -7,6 +7,7 @@ import Home from './Comp/Home';
 import NotFound from './Comp/NotFound';
 import Random from './Comp/Random';
 import Switch from './Comp/Switch';
+import { BgProvider } from './context/BgProvider';
 
 function App() {
   return (
@@ -17,7 +18,13 @@ function App() {
             <Routes>
               <Route path='/' element={<Home />} />
               <Route path='/random' element={<Random />}/>
-              <Route path='/switch' element={<Switch />}/>
+
+              <Route path='/switch' element={
+                <BgProvider>  
+                  <Switch />
+                </BgProvider>
+              }/>
+
               <Route path='*' element={<NotFound />} />
             </Routes>
         </main>

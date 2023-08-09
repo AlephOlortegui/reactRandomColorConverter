@@ -1,3 +1,7 @@
+# Hello
+- this idea was coming from this video:
+- [Youtube](https://www.youtube.com/watch?v=YBYlW3nUDJ8&t=8s)
+
 # regular variable vs default props
 
 ## Using a Regular Variable:
