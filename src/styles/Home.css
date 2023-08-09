@@ -1,0 +1,17 @@
+figure{
+  position: relative;
+  width: 100%;
+  height: 300px; /* Set the desired height */
+  background-color: #f0f0f0; /* Set the background color */
+}
+.gif {
+  width: 100%;
+  height: 100%;
+  background-image: url('../imgs/rigby_computer.gif');
+  background-size: cover;
+  background-position: center;
+}
+
+
+
+
